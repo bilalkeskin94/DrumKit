@@ -3,11 +3,13 @@ for (let i =0; i<document.querySelectorAll(".drum").length;i++){
 
         let buttonHtml=this.innerHTML;
         findKey(buttonHtml);
+        makeAnimation(buttonHtml);
     });
 
 }
 document.addEventListener("keypress",function (e) {
     findKey(e.key);
+    makeAnimation(e.key);
 })
 function findKey(key) {
     switch (key) {
@@ -43,4 +45,11 @@ function findKey(key) {
     }
 }
 
+function makeAnimation(key) {
+    let activeKey=document.querySelector("."+key);
+    activeKey.classList.add("pressed");
+    setTimeout(function () {
+    activeKey.classList.remove("pressed");
+    },150);
+}
 
